@@ -65,6 +65,7 @@ export interface HealthGoal {
   id: string;
   type: 'weight' | 'bodyFat' | 'bmi' | 'water' | 'exercise';
   target: number;
+  initial: number;
   current: number;
   unit: string;
   deadline?: Date;

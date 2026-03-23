@@ -25,8 +25,9 @@ export const useHealthGoals = (): UseHealthGoalsReturn => {
       const stored = localStorage.getItem(STORAGE_KEY);
       if (stored) {
         const parsed = JSON.parse(stored);
-        const goalsWithDates = parsed.map((g: { id: string; type: HealthGoal['type']; target: number; current: number; unit: string; deadline?: string; createdAt: string }) => ({
+        const goalsWithDates = parsed.map((g: { id: string; type: HealthGoal['type']; target: number; initial?: number; current: number; unit: string; deadline?: string; createdAt: string }) => ({
           ...g,
+          initial: g.initial ?? g.current,
           deadline: g.deadline ? new Date(g.deadline) : undefined,
           createdAt: new Date(g.createdAt)
         }));
@@ -96,9 +97,9 @@ export const useHealthGoals = (): UseHealthGoalsReturn => {
   const calculateProgress = useCallback((goal: HealthGoal): number => {
     if (goal.type === 'weight' || goal.type === 'bodyFat') {
       // For weight/body fat goals, progress is inverse if losing
-      if (goal.target < goal.current) {
-        // Losing weight
-        const startWeight = goal.current;
+      if (goal.target < goal.initial) {
+        // Losing weight/body fat
+        const startWeight = goal.initial;
         const targetWeight = goal.target;
         const lost = startWeight - goal.current;
         const toLose = startWeight - targetWeight;

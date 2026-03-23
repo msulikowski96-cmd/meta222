@@ -211,9 +211,10 @@ export const MacroPlanner = ({
                   <Beef className="w-4 h-4 text-green-500" />
                   <span className="text-sm">Białko</span>
                 </div>
-                <Progress 
+                <Progress
                   value={(dailyTotals.protein / macroTargets.protein) * 100}
-                  className={`h-2 ${getProgressColor(dailyTotals.protein, macroTargets.protein)}`}
+                  className="h-2"
+                  indicatorClassName={getProgressColor(dailyTotals.protein, macroTargets.protein)}
                 />
                 <p className="text-xs mt-1">{dailyTotals.protein}/{macroTargets.protein}g</p>
               </div>
@@ -222,9 +223,10 @@ export const MacroPlanner = ({
                   <Wheat className="w-4 h-4 text-blue-500" />
                   <span className="text-sm">Węgle</span>
                 </div>
-                <Progress 
+                <Progress
                   value={(dailyTotals.carbs / macroTargets.carbs) * 100}
-                  className={`h-2 ${getProgressColor(dailyTotals.carbs, macroTargets.carbs)}`}
+                  className="h-2"
+                  indicatorClassName={getProgressColor(dailyTotals.carbs, macroTargets.carbs)}
                 />
                 <p className="text-xs mt-1">{dailyTotals.carbs}/{macroTargets.carbs}g</p>
               </div>
@@ -233,9 +235,10 @@ export const MacroPlanner = ({
                   <Droplets className="w-4 h-4 text-amber-500" />
                   <span className="text-sm">Tłuszcze</span>
                 </div>
-                <Progress 
+                <Progress
                   value={(dailyTotals.fat / macroTargets.fat) * 100}
-                  className={`h-2 ${getProgressColor(dailyTotals.fat, macroTargets.fat)}`}
+                  className="h-2"
+                  indicatorClassName={getProgressColor(dailyTotals.fat, macroTargets.fat)}
                 />
                 <p className="text-xs mt-1">{dailyTotals.fat}/{macroTargets.fat}g</p>
               </div>
